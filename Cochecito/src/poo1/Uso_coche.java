@@ -5,7 +5,10 @@ public class Uso_coche {
 	public static void main(String[] args) {
 		//Instancio una clase
 		Coche Porsche = new Coche();
-		System.out.println("Mi coche tiene "+Porsche.ruedas+" ruedas");
+		System.out.println(Porsche.dime_motor());
+		
+		Coche Subaru = new Coche();
+		System.out.println(Subaru.establece_color());
 
 	}
 
