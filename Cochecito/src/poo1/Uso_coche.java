@@ -4,11 +4,13 @@ public class Uso_coche {
 
 	public static void main(String[] args) {
 		//Instancio una clase
-		Coche Porsche = new Coche();
-		System.out.println(Porsche.dime_motor());
 		
 		Coche Subaru = new Coche();
-		System.out.println(Subaru.establece_color());
+		
+		System.out.println(Subaru.getDatosGenerales());
+		System.out.println(Subaru.getColor());
+		Subaru.setAsientos("si");
+		System.out.println(Subaru.getAsientos());
 
 	}
 
