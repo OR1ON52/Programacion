@@ -23,8 +23,16 @@ public class curso_main {
 			if(opcion==1) {
 			clase.setAsignatura(JOptionPane.showInputDialog("Introduce el nombre de la asignatura."));
 		asignatura[id_asignatura] = clase.getAsignatura();
-		String notaInput = JOptionPane.showInputDialog("Introduce la nota de la asignatura.");
-		clase.setNota(Integer.parseInt(notaInput));
+		do {
+			String notaInput = JOptionPane.showInputDialog("Introduce la nota de la asignatura.");
+		clase.setNota(Double.parseDouble(notaInput));
+		if(clase.getNota()<0) {
+			System.out.println("ERROR:La nota no puede ser inferior a 0");
+		} else {
+			break;
+		}
+		} while(clase.getNota()<0);
+		
 		nota [id_asignatura] = clase.getNota();
 		id_asignatura++;
 			} else if(opcion==2 && asignatura[0]!=null){
@@ -32,15 +40,32 @@ public class curso_main {
 				break;
 			} else if(opcion==2 && asignatura[0]==null){
 				
-				JOptionPane.showInputDialog("ERROR:Opción inválida. Por favor introduzca un valor correcto.\nPara agregar una asignatura pulsa 1. Para ver el boletín de notas pulsa 2.");
+				JOptionPane.showInputDialog("ERROR:No se ha registrado ninguna nota aún.\nPara agregar una asignatura pulsa 1. Para ver el boletín de notas pulsa 2.");
+			} else {
+				JOptionPane.showInputDialog("ERROR:Valor inválido, por favor seleccione una opción.\\nPara agregar una asignatura pulsa 1. Para ver el boletín de notas pulsa 2.");
 			}
 		} while(!salirNotas);
 		
 		for (int i=0;i<10;i++) {
 			if(asignatura[i]!=null) {
 				System.out.println("Asignatura: "+asignatura[i]);
-				System.out.println("Nota: "+nota[i]);
-			}
+				if(nota[i]<5) {
+					System.out.println("Nota: F");
+
+				} else if(nota[i]>=5.0 && nota[i]<6.0) {
+					System.out.println("Nota: D");
+				} else if(nota[i]>=6.0 && nota[i]<7.0) {
+					System.out.println("Nota: C");
+				} else if(nota[i]>=7.0 && nota[i]<8.0) {
+					System.out.println("Nota: B");
+				} else if(nota[i]>=8.0 && nota[i]<9.0) {
+					System.out.println("Nota: A");
+				} else if(nota[i]>=9.0 && nota[i]<10.0) {
+					System.out.println("Nota: A+");
+				} else {
+					System.out.println("Nota: S");
+				}
+							}
 		}
 		
 	}
