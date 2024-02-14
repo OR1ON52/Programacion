@@ -1,0 +1,229 @@
+Polimorfismo: El polimorfismo es la propiedad que permite enviar mensajes iguales a diferentes objetos que comparten una misma clase, y que pueden reaccionar de maneras diferentes e independientes entre ellos.
+
+Herencia: La herencia consiste en la atribución de características o propiedades de una clase madre a una clase hija que “hereda” estos mismos métodos y propiedades con el fin de reciclar código.
+
+Sobrecarga de métodos: Se refiere a la capacidad de identificar de manera idéntica a dos métodos diferentes que poseen respuestas distintas y que son diferenciadas en base a qué información se atribuya al método llamado.
+
+Polimorfismo paramétrico: En este polimorfismo no se identifica el tipo de dato sobre el que se trabaja, pudiendo utilizar todos los tipos de datos compatibles.
+
+Polimorfismo de inclusión: Tipo especial de sobrecarga de métodos que ocurre dentro de relaciones de herencia.
+
+EJEMPLOS:
+
+Herencia:
+
+class Animal {
+    String nombre;
+    int edad;
+
+    public Animal(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public void hacerSonido() {
+        // Método a ser implementado por las clases hijas
+    }
+}
+
+class Perro extends Animal {
+    String raza;
+
+    public Perro(String nombre, int edad, String raza) {
+        super(nombre, edad);
+        this.raza = raza;
+    }
+
+Polimorfismo de inclusión:
+
+
+
+class Animal {
+    String nombre;
+    int edad;
+
+    public Animal(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public void hacerSonido() {
+        System.out.println("Este animal hace un sonido.");
+    }
+}
+
+
+class Perro extends Animal {
+    String raza;
+
+    public Perro(String nombre, int edad, String raza) {
+        super(nombre, edad);
+        this.raza = raza;
+    }
+
+    public void hacerSonido() {
+        System.out.println("¡Guau!");
+    }
+}
+
+class Gato extends Animal {
+    String color;
+
+    public Gato(String nombre, int edad, String color) {
+        super(nombre, edad);
+        this.color = color;
+    }
+
+    public void hacerSonido() {
+        System.out.println("¡Miau!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Crear instancias de las clases hijas
+        Animal miPerro = new Perro("Buddy", 3, "Labrador");
+        Animal miGato = new Gato("Whiskers", 2, "Gris");
+
+              System.out.println(miPerro.nombre + " tiene " + miPerro.edad + " años y hace ");
+        miPerro.hacerSonido();
+
+        System.out.println(miGato.nombre + " tiene " + miGato.edad + " años y hace ");
+        miGato.hacerSonido();
+    }
+
+Al contrario que en el ejemplo anterior, el método hacerSonido() posee varias funciones, y dependiendo de por qué animal sea llamado, hará un sonido u otro.
+
+Sobrecarga:
+
+public class SobrecargaMetodos {
+
+    public int sumar(int a, int b) {
+        return a + b;
+    }
+
+    public int sumar(int a, int b, int c) {
+        return a + b + c;
+    }
+
+
+    public float sumar(float a, float b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        SobrecargaMetodos sm = new SobrecargaMetodos();
+
+
+        int suma1 = sm.sumar(5, 10);
+        System.out.println("Suma de dos enteros: " + suma1);
+
+        int suma2 = sm.sumar(5, 10, 15);
+        System.out.println("Suma de tres enteros: " + suma2);
+
+        float suma3 = sm.sumar(2.5f, 3.5f);
+        System.out.println("Suma de dos números flotantes: " + suma3);
+    }
+}
+
+En este ejemplo, dependiendo de los valores introducidos en el método, se realizará una operación u otra.
+
+Polimorfismo paramétrico:
+
+
+class Pareja<T> {
+    private T primero;
+    private T segundo;
+
+    public Pareja(T primero, T segundo) {
+        this.primero = primero;
+        this.segundo = segundo;
+    }
+
+    public T getPrimero() {
+        return primero;
+    }
+
+    public T getSegundo() {
+        return segundo;
+    }
+
+    public void setPrimero(T primero) {
+        this.primero = primero;
+    }
+
+    public void setSegundo(T segundo) {
+        this.segundo = segundo;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Crear una instancia de Pareja con enteros
+        Pareja<Integer> parejaEnteros = new Pareja<>(10, 20);
+        System.out.println("Primer elemento: " + parejaEnteros.getPrimero());
+        System.out.println("Segundo elemento: " + parejaEnteros.getSegundo());
+
+        // Crear una instancia de Pareja con cadenas
+        Pareja<String> parejaCadenas = new Pareja<>("Hola", "Mundo");
+        System.out.println("Primer elemento: " + parejaCadenas.getPrimero());
+        System.out.println("Segundo elemento: " + parejaCadenas.getSegundo());
+    }
+}
+
+Este es un ejemplo de polimorfismo paramétrico, aunque no termino de entender qué diferencia hay o cómo funciona.
+
+
+
+
+Polimorfismo:
+
+class Animal {
+    public void hacerSonido() {
+        System.out.println("Este animal hace un sonido.");
+    }
+}
+
+
+class Perro extends Animal {
+
+    public void hacerSonido() {
+        System.out.println("¡Guau!");
+    }
+}
+
+
+class Gato extends Animal {
+
+    public void hacerSonido() {
+        System.out.println("¡Miau!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal miPerro = new Perro();        
+        Animal miGato = new Gato(); 
+
+        miPerro.hacerSonido(); 
+        miGato.hacerSonido(); 
+    }
+}
+
+Este ejemplo es básicamente el mismo que hemos usado antes, ya que explica varias de estas definiciones.
+
+DIFERENCIA ENTRE SOBRECARGA Y POLIMORFISMO:
+
+En el polimorfismo, se atribuye un mismo mensaje a diferentes objetos, y de ese mismo mensaje, los objetos y clases reaccionan de manera diferente. En cambio en la sobrecarga de métodos, el “mensaje”, en este caso el método es el que adquiere diferentes respuestas dependiendo de la información que se le de.
+
+DIFERENCIA ENTRE SOBRECARGA Y REDEFINICIÓN:
+
+La sobrecarga consiste en crear numerosas respuestas que puede adquirir un método, mientras que la redefinición, como su propio nombre indica, redefine una única respuesta en otra nueva en un método que hereda de una clase madre. En conclusión, en la sobrecarga las diferentes respuestas existen al mismo tiempo, mientras que en la redefinición solo existe una a la vez.
+
+Definición de firma: La firma se refiere a cómo se identifica un método, y este se identifica a través de su nombre apodado en el código y los datos que acepta.
+
+Definición de Overloading y Overriding: La sobrecarga permite crear varios métodos llamados de manera exactamente igual, y solo se distinguen de los datos introducidos dentro de cada uno. En el Overriding se modifica el método que utiliza una subclase, que está definida en su clase madre.
+
+¿Se pueden sobrecargar métodos estáticos?: Sí, ya que no interfiere con su lógica de static, al poder ser llamados de la misma manera.
+
+¿Se puede sobrecargar el metodo main?: No, ya que main es un método que indica el punto de entrada de cualquier programa, además de que la firma de main ya está definida por el lenguaje, por lo que no se puede volver a usar.
